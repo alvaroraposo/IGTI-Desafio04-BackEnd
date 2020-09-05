@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import {gradeRouter} from './routes/gradeRouter.js';
 
@@ -24,17 +23,13 @@ const app = express();
 //define o dominio de origem para consumo do servico
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: 'https://igtifrontend.herokuapp.com/',
-  })
-);
 app.use(gradeRouter);
 
 app.get('/', (req, res) => {
   res.send('API em execucao');
 });
 
+const porta = process.env.PORT || 8081;
 app.listen(process.env.PORT || 8081, () => {
-  console.log("APP INICIADA!");
+  console.log("APP INICIADA: PORTA", porta);
 });
