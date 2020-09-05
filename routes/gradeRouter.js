@@ -5,7 +5,7 @@ import cors from 'cors';
 const app = express();
 app.use(
     cors({
-        origin: 'https://igtifrontend.herokuapp.com/',
+        origin: 'https://igtifrontend.herokuapp.com',
         optionsSuccessStatus: 200
     })
 );
